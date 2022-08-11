@@ -1,0 +1,153 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "",
+    "version": "1.0.0",
+    "title": "API Endpoint"
+  },
+  "servers": [
+    {
+      "url": "http://"
+    },
+    {
+      "url": "https://"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Extract Request",
+      "description": "API for extract charactors and return json"
+    },
+    {
+      "name": "Exchange Request",
+      "description": "API for post json and exchange and save new file"
+    }
+  ],
+  "paths": {
+    "/get-file/": {
+      "post": {
+        "tags": [
+          "Get file from S3"
+        ],
+        "summary": "Get file from S3",
+        "requestBody":{
+          "description": "Get excel file from S3",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/getfile"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/extract-data/": {
+      "post": {
+        "tags": [
+          "Extract Request"
+        ],
+        "summary": "Return extracted data",
+        "requestBody":{
+          "description": "Get excel file from S3",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/getfile"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+      
+    },    
+    "/exchange-data/": {      
+      "post": {
+        "tags": [
+          "Exchange Request"
+        ],
+        "summary": "Exchange Request",
+        "requestBody": {
+          "description": "Book Request Post Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/exchangebody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    }    
+  },
+  "components": {
+    "schemas": {
+      "getfile": {
+        "type": "object",
+        "properties": {
+          "templated_id": {
+            "type": "string",
+            "format": "string",
+            "example": "12"            
+          },
+          "template_url": {
+            "type": "string",
+            "format": "string",
+            "example": "org/1_1/81/1/sample_test1.jpg"
+          }
+        }
+      },
+      "exchangebody": {
+        "type": "object",
+        "properties": {
+          "output_id": {
+            "type": "int",
+            "format": "int",
+            "example": 1,
+            "maxLength": 3
+          },
+          "templated_id": {
+            "type": "string",
+            "format": "string",
+            "example": "12"            
+          },
+          "template_url": {
+            "type": "string",
+            "format": "string",
+            "example": "org/1_1/81/1/sample_test1.jpg"
+          },
+          "template_color": {
+            "type": "string",
+            "format": "string",
+            "example": "red"
+          },
+          "replace_info": {
+            "type": "object"
+
+          }
+        }
+      }      
+    }
+  }
+}
