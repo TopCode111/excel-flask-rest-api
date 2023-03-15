@@ -26,9 +26,9 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 # Secret key for signing cookies
 SECRET_KEY = "secret"
 
-AWS_ACCESS_KEY_ID = 'AKIA3X4HPQTFERPDUJUF'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'miraie-image-storage-tmp'
+AWS_ACCESS_KEY_ID = ''
+AWS_SECRET_ACCESS_KEY = ''
+AWS_STORAGE_BUCKET_NAME = ''
 AWS_S3_REGION_NAME = "ap-northeast-1"
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/'
